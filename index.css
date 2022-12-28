@@ -1,0 +1,75 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+.pianoWrapper {
+  position: absolute;
+  top: calc(50% - 200px);
+  left: calc(50% - 400px);
+  width: 800px;
+  height: 400px;
+  background-color: black;
+  border-radius: 20px;
+  padding: 40px;
+}
+.playable {
+  font-size: 24px;
+  color: rgba(238, 227, 227, 0.817);
+}
+.volume {
+  font-size: 18px;
+  color: rgba(238, 227, 227, 0.817);
+}
+.volumeWrapper {
+  display: flex;
+  gap: 10px;
+}
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.keysWrapper {
+  display: flex;
+  gap: 10px;
+}
+.keysWrapper div {
+  font-size: 18px;
+  color: rgba(238, 227, 227, 0.817);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin-left: 10px;
+  margin-top: 7px;
+  width: 150px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background-image: linear-gradient(rgba(223, 211, 211, 0.787), #b1a9a5c7);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: rgb(223, 217, 217);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  background: rgb(152, 139, 139);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+}
