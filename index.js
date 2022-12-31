@@ -1,5 +1,6 @@
 const wrapper = document.getElementById("keys");
 const blackKeys = document.querySelectorAll(".black-key");
+const input = document.getElementById("inputElement");
 const sounds = [
   { audio: new Audio("./tunes/a.wav"), keyCode: 65 },
   { audio: new Audio("./tunes/d.wav"), keyCode: 68 },
@@ -17,6 +18,7 @@ const sounds = [
   { audio: new Audio("./tunes/w.wav"), keyCode: 87 },
   { audio: new Audio("./tunes/y.wav"), keyCode: 89 },
 ];
+let volume = 0.5;
 document.addEventListener("keyup", handleKeyup);
 function handleKeyup(e) {
   sounds.forEach((sound) => {
@@ -29,10 +31,16 @@ function handleKeyup(e) {
 
 document.addEventListener("DOMContentLoaded", handleDomLoaded);
 
+input.addEventListener("change", (e) => {
+  volume = Number(e.target.value) / 10;
+});
+
 function handleDomLoaded() {
   wrapper.querySelectorAll(".key").forEach((element, index) => {
     element.addEventListener("click", () => {
       const sound = sounds[index].audio;
+      console.log(volume);
+      sound.volume = volume;
       sound.play();
     });
   });
