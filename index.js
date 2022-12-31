@@ -1,6 +1,8 @@
 const wrapper = document.getElementById("keys");
 const blackKeys = document.querySelectorAll(".black-key");
 const input = document.getElementById("inputElement");
+const toggle = document.querySelector(".toggleContainer");
+
 const sounds = [
   { audio: new Audio("./tunes/a.wav"), keyCode: 65 },
   { audio: new Audio("./tunes/d.wav"), keyCode: 68 },
@@ -18,7 +20,10 @@ const sounds = [
   { audio: new Audio("./tunes/w.wav"), keyCode: 87 },
   { audio: new Audio("./tunes/y.wav"), keyCode: 89 },
 ];
+
 let volume = 0.5;
+let isToggle = false;
+
 document.addEventListener("keyup", handleKeyup);
 function handleKeyup(e) {
   sounds.forEach((sound) => {
@@ -33,6 +38,24 @@ document.addEventListener("DOMContentLoaded", handleDomLoaded);
 
 input.addEventListener("change", (e) => {
   volume = Number(e.target.value) / 10;
+});
+
+toggle.addEventListener("click", (e) => {
+  const toggleChild = toggle.children[0];
+  const toggleChildMargin = Number(toggleChild.style.marginLeft.slice(0, -2));
+  if (toggleChildMargin > 1) {
+    isToggle = true;
+    toggleChild.style.marginLeft = 0;
+    toggleChild.style.backgroundColor = "rgba(175, 167, 167, 0.817)";
+    toggleChild.style.transition = "all 0.5s ease-in-out";
+    document.body.style.backgroundColor = "";
+    return;
+  }
+  isToggle = false;
+  toggleChild.style.marginLeft = "30px";
+  toggleChild.style.backgroundColor = "rgba(238, 227, 227, 0.817)";
+  toggleChild.style.transition = "all 0.3s ease-in-out";
+  document.body.style.backgroundColor = "purple";
 });
 
 function handleDomLoaded() {
